@@ -20,7 +20,7 @@ let escala = 1
 // independientes de los FPS.
 const FramesPerfectos = 1000/60
 let CambioDeTiempo = 0
-let UltimaMarcaDeTiempo = 0
+let ultimaMarcaDeTiempo = 0
 
 
 
@@ -33,15 +33,21 @@ const teclas = {}
 
 // Función principal del juego.
 function inicio() {
-	console.log("Hola Mundo")
+	window.onload = function() {
+		requestAnimationFrame(BuclePrincipal)
+	}
 }
 
 
 
 
 // Búcle principal del juego.
-function BuclePrincipal() {
-	console.log("Búcleeee!")
+function BuclePrincipal(marcaDeTiempo) {
+	requestAnimationFrame(BuclePrincipal)
+	CambioDeTiempo = (marcaDeTiempo - ultimaMarcaDeTiempo) / FramesPerfectos
+	ultimaMarcaDeTiempo = marcaDeTiempo
+
+	contexto.clearRect(0,0, lienzo.width, lienzo.height)
 }
 
 
@@ -49,5 +55,9 @@ function BuclePrincipal() {
 
 // Exportación de lo que se utilizará en otros códigos.
 export {
-	inicio
+	inicio,
+	lienzo,
+	contexto,
+	CambioDeTiempo,
+	escala
 }
