@@ -1,5 +1,7 @@
 // Este código tiene como objetivo preparar todo el terreno para ejecutar el juego.
 
+import * as Control from './ControladorDeEventos.js'
+
 
 // Inizialización del entorno gráfico.
 const lienzo = document.getElementById("game")
@@ -34,6 +36,7 @@ const teclas = {}
 // Función principal del juego.
 function inicio() {
 	window.onload = function() {
+		Control.iniciar()
 		requestAnimationFrame(BuclePrincipal)
 	}
 }
@@ -48,6 +51,8 @@ function BuclePrincipal(marcaDeTiempo) {
 	ultimaMarcaDeTiempo = marcaDeTiempo
 
 	contexto.clearRect(0,0, lienzo.width, lienzo.height)
+
+	Control.actualizar()
 }
 
 
