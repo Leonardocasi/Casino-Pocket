@@ -1,7 +1,53 @@
-// Inizialización del entorno.
-const lienzo = document.getElementById("game")
-const ctx = lienzo.getContext("2d") 			//Abreviación de contexto
+// Este código tiene como objetivo preparar todo el terreno para ejecutar el juego.
 
+
+// Inizialización del entorno gráfico.
+const lienzo = document.getElementById("game")
+const contexto = lienzo.getContext("2d")
+
+// Establecimiento de la resolución de la ventana del juego
+// a la misma resolución que la ventana del navegador.
 lienzo.width = innerWidth
 lienzo.height = innerHeight
 
+// Escala de la cámara.
+let escala = 1
+
+
+
+
+// Variables necesarias para el cálculo de las físicas.
+// independientes de los FPS.
+const FramesPerfectos = 1000/60
+let CambioDeTiempo = 0
+let UltimaMarcaDeTiempo = 0
+
+
+
+
+// Variables para los controles.
+const teclas = {}
+
+
+
+
+// Función principal del juego.
+function inicio() {
+	console.log("Hola Mundo")
+}
+
+
+
+
+// Búcle principal del juego.
+function BuclePrincipal() {
+	console.log("Búcleeee!")
+}
+
+
+
+
+// Exportación de lo que se utilizará en otros códigos.
+export {
+	inicio
+}
