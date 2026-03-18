@@ -7,6 +7,7 @@ class Pelota {
     constructor(x, y, angulo, velocidad) {
         this.posicion = {x, y}
         this.angulo = angulo
+        this.radio = 10.5
         this.velocidad = velocidad
         this.textura = Texturas.Ruleta
     }
@@ -22,9 +23,9 @@ class Pelota {
         Sistema.contexto.fillStyle = "#ffffff"
         Sistema.contexto.beginPath()
 		Sistema.contexto.arc(
-			this.posicion.x,
-			this.posicion.y,
-			50,
+			this.posicion.x * Sistema.escala,
+			this.posicion.y * Sistema.escala,
+			this.radio * Sistema.escala,
 			0, 6.2832,
 			false
 		)

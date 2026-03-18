@@ -13,7 +13,8 @@ lienzo.width = innerWidth
 lienzo.height = innerHeight
 
 // Escala de la cámara.
-let escala = 1
+// Las medidas para la física fueron establecidas en mm.
+let escala = 0.6
 
 
 

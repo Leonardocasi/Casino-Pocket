@@ -9,6 +9,7 @@ class Ruleta {
     constructor (angulo) {
         this.angulo = angulo
         this.textura = Texturas.Ruleta
+        this.radio = 400
     }
 
 
@@ -24,14 +25,22 @@ class Ruleta {
 
         Sistema.contexto.save()
         Sistema.contexto.translate(
-            x + this.textura.width / 2,
-            y + this.textura.height / 2
+            (x + this.radio) * Sistema.escala,
+            (y + this.radio) * Sistema.escala
         )
         Sistema.contexto.rotate(this.angulo)
         Sistema.contexto.drawImage(
-        this.textura,
-            -this.textura.width / 2,
-            -this.textura.height / 2
+            // Textura a usar.
+            this.textura,
+
+            // Posición.
+            -this.radio * Sistema.escala,
+            -this.radio * Sistema.escala,
+
+            // Tamaño.
+            this.radio * 2 * Sistema.escala,
+            this.radio * 2 * Sistema.escala
+
         )
         Sistema.contexto.restore()
     }
