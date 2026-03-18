@@ -14,13 +14,13 @@ class Ruleta {
 
 
     actualizar() {
-        this.angulo += 0.06
+        this.angulo += 0.06 * Sistema.CambioDeTiempo
     }
 
 
     dibujar() {
-        const x = 500
-        const y = 500
+        const x = 150
+        const y = 150
 
 
         Sistema.contexto.save()
