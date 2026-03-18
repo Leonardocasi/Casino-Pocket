@@ -1,5 +1,5 @@
-import * as Texturas from './Texturas.js'
 import * as Sistema from './main.js'
+import * as Texturas from './Texturas.js'
 
 
 
@@ -13,7 +13,7 @@ class Ruleta {
 
 
     actualizar() {
-        this.angulo += 0.11
+        this.angulo += 0.06
     }
 
 
