@@ -21,7 +21,6 @@ let escala = 0.6
 
 // Variables necesarias para el cálculo de las físicas.
 // independientes de los FPS.
-const FramesPerfectos = 1000/60
 let CambioDeTiempo = 0
 let ultimaMarcaDeTiempo = 0
 
@@ -48,7 +47,7 @@ function inicio() {
 // Búcle principal del juego.
 function BuclePrincipal(marcaDeTiempo) {
 	requestAnimationFrame(BuclePrincipal)
-	CambioDeTiempo = (marcaDeTiempo - ultimaMarcaDeTiempo) / FramesPerfectos
+	CambioDeTiempo = (marcaDeTiempo - ultimaMarcaDeTiempo) / 1000
 	ultimaMarcaDeTiempo = marcaDeTiempo
 
 	contexto.clearRect(0,0, lienzo.width, lienzo.height)

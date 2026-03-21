@@ -14,7 +14,7 @@ class Ruleta {
 
 
     actualizar() {
-        this.angulo += 0.06 * Sistema.CambioDeTiempo
+        this.angulo += Math.PI*2 * Sistema.CambioDeTiempo
     }
 
 
