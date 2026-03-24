@@ -11,12 +11,18 @@ class Ruleta {
         this.textura = Texturas.Ruleta
         this.radio = 400
 
-        this.velocidad = 0.3
+        this.velocidad = 0.6    // RPS. Rango entre 0.3 a 0.6 inicial
+        this.friccion = 0.02*(2*Math.PI)
     }
 
 
     actualizar() {
+        // Fricción
+        if (this.velocidad > 0)
+            this.velocidad -= this.friccion * Sistema.CambioDeTiempo
         this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
+
+        console.log(this.velocidad)
     }
 
 
