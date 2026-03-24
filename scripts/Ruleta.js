@@ -11,7 +11,7 @@ class Ruleta {
         this.textura = Texturas.Ruleta
         this.radio = 400
 
-        this.velocidad = 0.6    // RPS. Rango entre 0.3 a 0.6 inicial
+        this.velocidad = 0.3    // RPS. Rango entre 0.3 a 0.6 inicial
         this.desaceleracion = 1/300   // 3.33 x10^-3 RPS^2
     }
 
@@ -22,7 +22,8 @@ class Ruleta {
             this.velocidad -= this.desaceleracion * Sistema.CambioDeTiempo
         this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
 
-        console.log(this.velocidad)
+        //console.log(this.velocidad)
+        console.log(Math.random())
     }
 
 
@@ -36,7 +37,9 @@ class Ruleta {
             Sistema.Camara.x,   // Posición global 0,0
             Sistema.Camara.y
         )
+
         Sistema.contexto.rotate(this.angulo)
+
         Sistema.contexto.drawImage(
             // Textura a usar.
             this.textura,
