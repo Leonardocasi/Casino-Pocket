@@ -10,11 +10,13 @@ class Ruleta {
         this.angulo = angulo
         this.textura = Texturas.Ruleta
         this.radio = 400
+
+        this.velocidad = 0.3
     }
 
 
     actualizar() {
-        this.angulo += Math.PI*2 * Sistema.CambioDeTiempo
+        this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
     }
 
 
