@@ -6,7 +6,7 @@ import { Pelota } from './Pelota.js'
 
 // Variables
 const ruleta = new Ruleta(0)
-const pelota = new Pelota(200, 200, 10, 10)
+const pelota = new Pelota(450, 0, 10, 10)
 
 
 function iniciar() {

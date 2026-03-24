@@ -32,6 +32,11 @@ const teclas = {}
 
 
 
+// Cámara
+let Camara = {x: -550, y: 550}
+
+
+
 
 // Función principal del juego.
 function inicio() {
@@ -64,5 +69,6 @@ export {
 	lienzo,
 	contexto,
 	CambioDeTiempo,
-	escala
+	escala,
+	Camara
 }

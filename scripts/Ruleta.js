@@ -33,8 +33,8 @@ class Ruleta {
 
         Sistema.contexto.save()
         Sistema.contexto.translate(
-            (x + this.radio) * Sistema.escala,
-            (y + this.radio) * Sistema.escala
+            (-Sistema.Camara.x) * Sistema.escala,
+            (Sistema.Camara.y) * Sistema.escala
         )
         Sistema.contexto.rotate(this.angulo)
         Sistema.contexto.drawImage(
@@ -49,7 +49,7 @@ class Ruleta {
             this.radio * 2 * Sistema.escala,
             this.radio * 2 * Sistema.escala
         )
-        
+
         Sistema.contexto.restore()
     }
 }
