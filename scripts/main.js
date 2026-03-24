@@ -33,7 +33,7 @@ const teclas = {}
 
 
 // Cámara
-let Camara = {x: -550, y: 550}
+let Camara = {x: lienzo.width/2, y: lienzo.height/2}
 
 
 

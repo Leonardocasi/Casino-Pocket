@@ -23,8 +23,8 @@ class Pelota {
         Sistema.contexto.fillStyle = "#ffffff"
         Sistema.contexto.beginPath()
 		Sistema.contexto.arc(
-			(this.posicion.x - Sistema.Camara.x) * Sistema.escala,
-			(this.posicion.y + Sistema.Camara.y) * Sistema.escala,
+			this.posicion.x * Sistema.escala + Sistema.Camara.x,
+			this.posicion.y * Sistema.escala + Sistema.Camara.y,
 			this.radio * Sistema.escala,
 			0, 6.2832,
 			false

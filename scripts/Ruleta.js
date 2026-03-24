@@ -33,8 +33,8 @@ class Ruleta {
 
         Sistema.contexto.save()
         Sistema.contexto.translate(
-            (-Sistema.Camara.x) * Sistema.escala,
-            (Sistema.Camara.y) * Sistema.escala
+            Sistema.Camara.x,   // Posición global 0,0
+            Sistema.Camara.y
         )
         Sistema.contexto.rotate(this.angulo)
         Sistema.contexto.drawImage(
@@ -42,8 +42,8 @@ class Ruleta {
             this.textura,
 
             // Posición.
-            -this.radio * Sistema.escala,
-            -this.radio * Sistema.escala,
+            -this.radio * Sistema.escala,   // La posición global es 0,0
+            -this.radio * Sistema.escala,   // La imágen se dibuja centrada
 
             // Tamaño.
             this.radio * 2 * Sistema.escala,
