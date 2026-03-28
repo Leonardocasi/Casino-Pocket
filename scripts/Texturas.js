@@ -1,5 +1,5 @@
 const Ruleta = new Image()
-Ruleta.src = 'texturas/TestSprite.png'
+Ruleta.src = 'texturas/Ruleta.png'
 
 
 
