@@ -1,6 +1,6 @@
 // Este código tiene como objetivo preparar todo el terreno para ejecutar el juego.
 
-import * as Control from './ControladorDeEventos.js'
+import * as Control from './LogicaDeJuego.js'
 
 
 // Inizialización del entorno gráfico.
@@ -14,7 +14,7 @@ lienzo.height = innerHeight
 
 // Escala de la cámara.
 // Las medidas para la física fueron establecidas en mm.
-let escala = 0.6
+let escala = 0.8
 
 
 

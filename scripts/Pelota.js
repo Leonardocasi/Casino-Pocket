@@ -5,28 +5,36 @@ import * as Texturas from './Texturas.js'
 
 class Pelota {
     constructor(x, y, angulo, velocidad) {
-        this.posicion = {x, y}
-        this.angulo = angulo
-        this.radio = 10.5
-        this.velocidad = velocidad
         this.textura = Texturas.Ruleta
+
+        this.radio = 10.5
+        this.posicion = {x, y}
+		this.xMinimo = 238
+        this.angulo = angulo
+        this.velocidad = velocidad
+		this.velocidadCaida = 0
         this.desaceleracion = 0.1
     }
 
     actualizar(Ruleta) {
         // Fricción
-        if (this.velocidad > 0 && this.posicion.x > 270) {
+        if (this.velocidad > 0 && this.posicion.x > this.xMinimo) {
             this.velocidad -= this.desaceleracion * Sistema.CambioDeTiempo
-            this.angulo -= this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
+            this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
         } else {
-            this.angulo += Ruleta.velocidad * Math.PI*2 * Sistema.CambioDeTiempo;
-            console.log(Ruleta.velocidad)
+			this.velocidad = 0
+            this.angulo -= Ruleta.velocidad * Math.PI*2 * Sistema.CambioDeTiempo;
         }
 
-        if (this.velocidad < 0.4 && this.posicion.x > 270)
-            this.posicion.x -= 3
+        if (this.velocidad < 0.4 && this.posicion.x > this.xMinimo) {
+			this.velocidadCaida += 400 * Sistema.CambioDeTiempo
+            this.posicion.x -= this.velocidadCaida * Sistema.CambioDeTiempo
+		}
+
+		if (this.angulo < 0) this.angulo += 2*Math.PI
+		if (this.angulo > 2*Math.PI) this.angulo -= 2*Math.PI
         
-        //console.log(this.velocidad)
+        //console.log(this.angulo)
     }
 
     dibujar() {
@@ -34,11 +42,11 @@ class Pelota {
 
         // Usar Posición global para el giro.
         Sistema.contexto.translate(
-            Sistema.Camara.x,   // Posición global 0,0
+            Sistema.Camara.x,
             Sistema.Camara.y
         )
 
-        Sistema.contexto.rotate(this.angulo)
+        Sistema.contexto.rotate(-this.angulo)
 
         // Dibujar círculo Blanco
         Sistema.contexto.fillStyle = "#ffffff"

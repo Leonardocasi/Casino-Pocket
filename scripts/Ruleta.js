@@ -11,19 +11,21 @@ class Ruleta {
         this.textura = Texturas.Ruleta
         this.radio = 400
 
-        this.velocidad = 0.3    // RPS. Rango entre 0.3 a 0.6 inicial
+        this.velocidad = 0.4    // RPS. Rango entre 0.3 a 0.6 inicial
         this.desaceleracion = 1/300   // 3.33 x10^-3 RPS^2
     }
 
 
     actualizar() {
         // Fricción
-        if (this.velocidad > 0)
+        if (this.velocidad > 0) {
             this.velocidad -= this.desaceleracion * Sistema.CambioDeTiempo
-        this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
+        	this.angulo -= this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
+		} else this.velocidad = 0
 
-        //console.log(this.velocidad)
-        console.log(Math.random())
+		if (this.angulo < 0) this.angulo += 2*Math.PI
+
+        //console.log(this.angulo)
     }
 
 
@@ -38,7 +40,7 @@ class Ruleta {
             Sistema.Camara.y
         )
 
-        Sistema.contexto.rotate(this.angulo)
+        Sistema.contexto.rotate(-this.angulo)
 
         Sistema.contexto.drawImage(
             // Textura a usar.
