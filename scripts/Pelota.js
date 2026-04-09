@@ -4,21 +4,21 @@ import * as Texturas from './Texturas.js'
 
 
 class Pelota {
-    constructor(x, y, angulo, velocidad) {
+    constructor(rMesa, angulo) {
         this.textura = Texturas.Ruleta
 
         this.radio = 10.5
-        this.posicion = {x, y}
+        this.radioMesa = rMesa
 		this.xMinimo = 238
         this.angulo = angulo
-        this.velocidad = velocidad
+        this.velocidad = 1 + Math.random()/2		// Entre 1 y 1.5
 		this.velocidadCaida = 0
         this.desaceleracion = 0.1
     }
 
     actualizar(Ruleta) {
         // Fricción
-        if (this.velocidad > 0 && this.posicion.x > this.xMinimo) {
+        if (this.velocidad > 0 && this.radioMesa > this.xMinimo) {
             this.velocidad -= this.desaceleracion * Sistema.CambioDeTiempo
             this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
         } else {
@@ -26,9 +26,9 @@ class Pelota {
             this.angulo -= Ruleta.velocidad * Math.PI*2 * Sistema.CambioDeTiempo;
         }
 
-        if (this.velocidad < 0.4 && this.posicion.x > this.xMinimo) {
+        if (this.velocidad < 0.4 && this.radioMesa > this.xMinimo) {
 			this.velocidadCaida += 400 * Sistema.CambioDeTiempo
-            this.posicion.x -= this.velocidadCaida * Sistema.CambioDeTiempo
+            this.radioMesa -= this.velocidadCaida * Sistema.CambioDeTiempo
 		}
 
 		if (this.angulo < 0) this.angulo += 2*Math.PI
@@ -52,8 +52,8 @@ class Pelota {
         Sistema.contexto.fillStyle = "#ffffff"
         Sistema.contexto.beginPath()
 		Sistema.contexto.arc(
-			this.posicion.x * Sistema.escala,
-			this.posicion.y * Sistema.escala,
+			this.radioMesa * Sistema.escala,
+			0,
 			this.radio * Sistema.escala,
 			0, 6.2832,
 			false

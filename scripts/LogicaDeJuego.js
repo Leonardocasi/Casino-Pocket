@@ -9,7 +9,7 @@ import { Pelota } from './Pelota.js'
 
 // Variables necesarias.
 const ruleta = new Ruleta(Math.random()*2*Math.PI)
-const pelota = new Pelota(500, 0, Math.random()*2*Math.PI, 1)
+const pelota = new Pelota(500, Math.random()*2*Math.PI)
 
 var rondaTerminada
 var ganador
@@ -39,7 +39,7 @@ function actualizar() {
 		}
 	}
 
-	if (pelota.posicion.x <= pelota.xMinimo && !rondaTerminada) {
+	if (pelota.radioMesa <= pelota.xMinimo && !rondaTerminada) {
 		rondaTerminada = true
 
 		ganador = Casilla.final(ruleta.angulo, pelota.angulo)
