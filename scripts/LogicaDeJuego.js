@@ -27,15 +27,28 @@ function actualizar() {
 
 	// Funciones del juego.
 	if (!rondaTerminada) {
+		ruleta.corregirAngulo()
 		ruleta.actualizar()
-		pelota.actualizar(ruleta)
-	} else {
-		// Animación una vez terminada la ronda
-		var distancia = Math.PI/2 - pelota.angulo
 
+		pelota.corregirAngulo()
+		pelota.actualizar(ruleta)
+	}
+	
+	// Animación una vez terminada la ronda
+	if (rondaTerminada) {
+		var distancia = Math.PI/2 - pelota.angulo
+		
 		if (Math.abs(distancia) > 0) {
 			pelota.angulo += distancia * 2 * Sistema.CambioDeTiempo
 			ruleta.angulo += distancia * 2 * Sistema.CambioDeTiempo
+		}
+		
+		var distanciaRuleta = pelota.angulo - ganador.anguloFinal - ruleta.angulo
+
+		if (Math.abs(distanciaRuleta) > (2*Math.PI/37)) distanciaRuleta += Math.PI*2
+
+		if (Math.abs(distanciaRuleta) > 0) {
+			ruleta.angulo += distanciaRuleta * 2 * Sistema.CambioDeTiempo
 		}
 	}
 

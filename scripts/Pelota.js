@@ -21,21 +21,26 @@ class Pelota {
         if (this.velocidad > 0 && this.radioMesa > this.xMinimo) {
             this.velocidad -= this.desaceleracion * Sistema.CambioDeTiempo
             this.angulo += this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
-        } else {
+        } /*else {
 			this.velocidad = 0
             this.angulo -= Ruleta.velocidad * Math.PI*2 * Sistema.CambioDeTiempo;
-        }
+        }*/
 
         if (this.velocidad < 0.4 && this.radioMesa > this.xMinimo) {
 			this.velocidadCaida += 400 * Sistema.CambioDeTiempo
             this.radioMesa -= this.velocidadCaida * Sistema.CambioDeTiempo
 		}
 
-		if (this.angulo < 0) this.angulo += 2*Math.PI
-		if (this.angulo > 2*Math.PI) this.angulo -= 2*Math.PI
         
         //console.log(this.angulo)
     }
+
+
+	corregirAngulo() {
+		if (this.angulo < 0) this.angulo += 2*Math.PI
+		if (this.angulo > 2*Math.PI) this.angulo -= 2*Math.PI
+	}
+
 
     dibujar() {
         Sistema.contexto.save()

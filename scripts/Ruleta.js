@@ -23,10 +23,14 @@ class Ruleta {
         	this.angulo -= this.velocidad * Math.PI*2 * Sistema.CambioDeTiempo
 		} else this.velocidad = 0
 
-		if (this.angulo < 0) this.angulo += 2*Math.PI
-
         //console.log(this.angulo)
     }
+
+
+	corregirAngulo() {
+		if (this.angulo < 0) this.angulo += 2*Math.PI
+		if (this.angulo > 2*Math.PI) this.angulo -= 2*Math.PI
+	}
 
 
     dibujar() {
