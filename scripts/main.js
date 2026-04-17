@@ -28,7 +28,14 @@ let ultimaMarcaDeTiempo = 0
 
 
 // Variables para los controles.
-const teclas = {}
+const cursor = {
+	// Posición
+	x: 0, 
+	y: 0,
+
+	// Estado del clic
+	clic: false
+}
 
 
 
@@ -63,6 +70,41 @@ function BuclePrincipal(marcaDeTiempo) {
 
 
 
+// detección del clic del mouse.
+lienzo.addEventListener('mousedown', function(event) {
+	estadoDelClic(event.button, true)
+})
+
+
+// Detección del alza del clic del mouse.
+lienzo.addEventListener('mouseup', function(event) {
+	estadoDelClic(event.button, false)
+})
+
+
+// Detección de la ubicación del mouse.
+lienzo.addEventListener('mousemove', function(event) {
+	// Obtén las coordenadas del borde del canvas
+    const rect = lienzo.getBoundingClientRect()
+    
+    // Calcula las coordenadas x y y del cursor con respecto al canvas
+    cursor.x = Math.round((event.clientX - rect.left) / escala)
+    cursor.y = Math.round((event.clientY - rect.top) / escala)
+})
+
+
+// Función de alternación para los clics del mouse.
+function estadoDelClic(clic, estado) {
+	switch(clic) {
+		case 0: 
+			cursor.clic = estado
+			break
+	}
+}
+
+
+
+
 // Exportación de lo que se utilizará en otros códigos.
 export {
 	inicio,
@@ -70,5 +112,6 @@ export {
 	contexto,
 	CambioDeTiempo,
 	escala,
-	Camara
+	Camara,
+	cursor
 }

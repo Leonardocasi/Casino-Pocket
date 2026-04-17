@@ -54,7 +54,7 @@ function mostrarCasillaGanadora(ganador) {
 		`¡¡${ganador.casilla} ${color}!!`,
 
 		// Posición.
-		Sistema.lienzo.width/2, Sistema.lienzo.height/4
+		Sistema.lienzo.width/2, Sistema.lienzo.height/5
 	)
 
 	Sistema.contexto.restore()

@@ -4,14 +4,16 @@ import * as Casilla from './Casilla.js'
 import { Ruleta } from './Ruleta.js'
 import { Pelota } from './Pelota.js'
 import { Ficha } from './Ficha.js'
+import { Boton } from './Boton.js'
 
 
 
 
 // Variables necesarias.
-const ruleta = new Ruleta(Math.random()*2*Math.PI)
-const pelota = new Pelota(500, Math.random()*2*Math.PI)
+let ruleta
+let pelota
 let fichas = new Ficha(200, 200, 5)
+const boton = new Boton(200, 200, "Reiniciar")
 
 var rondaTerminada
 var ganador
@@ -19,6 +21,9 @@ var ganador
 
 // Funcion inicial del juego.
 function iniciar() {
+	ruleta = new Ruleta(Math.random()*2*Math.PI)
+	pelota = new Pelota(500, Math.random()*2*Math.PI)
+
     rondaTerminada = false
 	ganador = {}
 
@@ -37,6 +42,9 @@ function actualizar() {
 		pelota.corregirAngulo()
 		pelota.actualizar(ruleta)
 	}
+
+
+
 	
 	// Animación una vez terminada la ronda
 	if (rondaTerminada) {
@@ -55,9 +63,16 @@ function actualizar() {
 			ruleta.angulo += distanciaRuleta * 2 * Sistema.CambioDeTiempo
 		}
 
-
-		// Aquí se muestra en pantalla quién ganó
-
+		// Esto hace funcionar al botón.
+		if (Sistema.cursor.clic &&
+			
+			Sistema.cursor.x >= boton.posicion.x &&
+			Sistema.cursor.x <= boton.posicion.x + boton.ancho &&
+			Sistema.cursor.y >= boton.posicion.y &&
+			Sistema.cursor.y <= boton.posicion.y + boton.alto) {
+			
+			iniciar()
+		}
 	}
 
 	if (pelota.radioMesa <= pelota.xMinimo && !rondaTerminada) {
@@ -66,13 +81,21 @@ function actualizar() {
 		ganador = Casilla.final(ruleta.angulo, pelota.angulo)
 		//console.log(ganador)
 	}
+
+
+
 	
 	// Dibujados del juego
     ruleta.dibujar()
     pelota.dibujar()
-	fichas.dibujar()
-	Interfaz.dibujar()
-	if (rondaTerminada) Interfaz.mostrarCasillaGanadora(ganador)
+	//fichas.dibujar()
+
+	// Dibujados relacionados a la interfaz.
+	//Interfaz.dibujar()
+	if (rondaTerminada) {
+		Interfaz.mostrarCasillaGanadora(ganador)
+		boton.dibujar()
+	}
 }
 
 
