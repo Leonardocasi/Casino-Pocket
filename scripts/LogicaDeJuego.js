@@ -3,6 +3,7 @@ import * as Interfaz from './Interfaz.js'
 import * as Casilla from './Casilla.js'
 import { Ruleta } from './Ruleta.js'
 import { Pelota } from './Pelota.js'
+import { Ficha } from './Ficha.js'
 
 
 
@@ -10,6 +11,7 @@ import { Pelota } from './Pelota.js'
 // Variables necesarias.
 const ruleta = new Ruleta(Math.random()*2*Math.PI)
 const pelota = new Pelota(500, Math.random()*2*Math.PI)
+let fichas = new Ficha(200, 200, 5)
 
 var rondaTerminada
 var ganador
@@ -19,6 +21,8 @@ var ganador
 function iniciar() {
     rondaTerminada = false
 	ganador = {}
+
+	fichas.iniciar()
 }
 
 
@@ -50,19 +54,25 @@ function actualizar() {
 		if (Math.abs(distanciaRuleta) > 0) {
 			ruleta.angulo += distanciaRuleta * 2 * Sistema.CambioDeTiempo
 		}
+
+
+		// Aquí se muestra en pantalla quién ganó
+
 	}
 
 	if (pelota.radioMesa <= pelota.xMinimo && !rondaTerminada) {
 		rondaTerminada = true
 
 		ganador = Casilla.final(ruleta.angulo, pelota.angulo)
-		console.log(ganador)
+		//console.log(ganador)
 	}
 	
 	// Dibujados del juego
     ruleta.dibujar()
     pelota.dibujar()
+	fichas.dibujar()
 	Interfaz.dibujar()
+	if (rondaTerminada) Interfaz.mostrarCasillaGanadora(ganador)
 }
 
 

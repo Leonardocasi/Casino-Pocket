@@ -4,11 +4,12 @@ import { Dinero } from './Dinero.js'
 
 
 function dibujar() {
+	// Cantidad de dinero.
 	Sistema.contexto.save()
 
 	Sistema.contexto.fillStyle = "#ffffff"
 	Sistema.contexto.font = `${50 * Sistema.escala}px plus jakarta sans`
-	Sistema.contexto.textAllign = "left"
+	Sistema.contexto.textAlign = "left"
 	Sistema.contexto.textBaseline = "top"
 
 	Sistema.contexto.fillText(
@@ -23,7 +24,45 @@ function dibujar() {
 }
 
 
+function mostrarCasillaGanadora(ganador) {
+	var color
+
+	switch(ganador.color) {
+		case 0:
+			color = "Negro"
+			break
+		
+		case 1:
+			color = "Rojo"
+			break
+
+		case 2:
+			color = "Verde"
+			break
+	}
+
+	// Casilla Ganadora
+	Sistema.contexto.save()
+
+	Sistema.contexto.fillStyle = "#ffffff"
+	Sistema.contexto.font = `${100 * Sistema.escala}px plus jakarta sans`
+	Sistema.contexto.textAlign = "center"
+	Sistema.contexto.textBaseline = "middle"
+
+	Sistema.contexto.fillText(
+		// Texto a mostrar.
+		`¡¡${ganador.casilla} ${color}!!`,
+
+		// Posición.
+		Sistema.lienzo.width/2, Sistema.lienzo.height/4
+	)
+
+	Sistema.contexto.restore()
+}
+
+
 
 export {
-	dibujar
+	dibujar,
+	mostrarCasillaGanadora
 }

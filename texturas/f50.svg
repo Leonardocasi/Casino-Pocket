@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+  <defs>
+    <radialGradient id="g50" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#d7a6ff"></stop>
+      <stop offset="35%" stop-color="#8e24aa"></stop>
+      <stop offset="100%" stop-color="#4a148c"></stop>
+    </radialGradient>
+  </defs>
+
+  <circle cx="60" cy="60" r="54" fill="url(#g50)" stroke="#3d1174" stroke-width="4"></circle>
+  <circle cx="60" cy="60" r="42" fill="none" stroke="#ffffff" stroke-width="3"></circle>
+  <circle cx="60" cy="60" r="30" fill="none" stroke="#ffffff" stroke-width="2"></circle>
+
+  <g fill="#ffffff">
+    <rect x="55" y="8" width="10" height="16" rx="3"></rect>
+    <rect x="55" y="96" width="10" height="16" rx="3"></rect>
+    <rect x="96" y="55" width="16" height="10" rx="3"></rect>
+    <rect x="8" y="55" width="16" height="10" rx="3"></rect>
+
+    <rect x="86.5" y="18.5" width="10" height="16" rx="3" transform="rotate(45 91.5 26.5)"></rect>
+    <rect x="23.5" y="85.5" width="10" height="16" rx="3" transform="rotate(45 28.5 93.5)"></rect>
+    <rect x="85.5" y="86.5" width="10" height="16" rx="3" transform="rotate(135 90.5 94.5)"></rect>
+    <rect x="18.5" y="23.5" width="10" height="16" rx="3" transform="rotate(135 23.5 31.5)"></rect>
+  </g>
+
+  <text x="60" y="68" text-anchor="middle" font-size="24" font-weight="bold" fill="#ffffff" font-family="Arial, sans-serif">50</text>
+</svg>
